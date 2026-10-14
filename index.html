@@ -11,18 +11,18 @@
 <main>
   <section class="hero">
     <div class="small">Nós vamos nos casar</div>
-    <div class="names">Maria<span>&amp;</span>João</div>
-    <div class="small">Sábado, 20 de dezembro de 2026</div>
-    <p class="info"><b>Cerimônia às 16h</b><br>Espaço Jardim das Flores<br>Rua das Acácias, 123 — Sua Cidade</p>
+    <div class="names">Jenifer<span>&amp;</span>Walleyn</div>
+    <div class="small">Quarta-feira, 04 de dezembro de 2026</div>
+    <p class="info"><b>Cerimônia às 14h</b><br>Espaço Jardim das Flores<br>Rua das Acácias, 123 — Sua Cidade</p>
   </section>
 
   <form id="f">
     <h2>Confirme sua presença</h2>
-    <p class="sub">Responda até 20 de novembro</p>
+    <p class="sub">Responda até 01 de novembro</p>
     <label for="n">Seu nome completo</label>
     <input id="n" autocomplete="name" required>
     <label for="q">Quantas pessoas vão com você? (incluindo você)</label>
-    <input id="q" type="number" min="1" max="10" value="1" inputmode="numeric">
+    <input id="q" type="number" min="1" max="3" value="1" inputmode="numeric">
     <label for="m">Recado para os noivos (opcional)</label>
     <textarea id="m"></textarea>
     <div class="btns">
@@ -34,7 +34,7 @@
 </main>
 <script>
 // Troque pelo WhatsApp dos noivos: código do país + DDD + número, só dígitos.
-var WHATSAPP = "5511999999999";
+var WHATSAPP = "61994547677";
 function enviar(vai){
   var nome = document.getElementById("n").value.trim();
   var qtd = document.getElementById("q").value || "1";

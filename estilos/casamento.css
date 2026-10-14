@@ -7,8 +7,9 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;text-align:center}
 main{max-width:480px;margin:0 auto;padding:32px 20px 48px}
-.hero{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:40px 20px;margin-bottom:24px}
-.small{letter-spacing:.25em;text-transform:uppercase;font-size:13px;color:var(--muted)}
+.hero{--overlay:rgba(255,255,255,.5);--hero-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3CradialGradient id='a' cx='20%25' cy='15%25' r='80%25'%3E%3Cstop offset='0' stop-color='%23f4d6cc'/%3E%3Cstop offset='1' stop-color='%23faf6f0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23a)'/%3E%3Cg fill='%23e8c4b4' opacity='.7'%3E%3Ccircle cx='40' cy='50' r='34'/%3E%3Ccircle cx='85' cy='28' r='22'/%3E%3Ccircle cx='360' cy='360' r='40'/%3E%3Ccircle cx='315' cy='388' r='24'/%3E%3C/g%3E%3Cg fill='none' stroke='%23b08968' stroke-width='1.5' opacity='.5'%3E%3Cpath d='M0 120 Q60 100 95 40'/%3E%3Cpath d='M400 280 Q340 300 305 360'/%3E%3C/g%3E%3Cg fill='%23b5c4a1' opacity='.65'%3E%3Cellipse cx='62' cy='92' rx='14' ry='6' transform='rotate(-40 62 92)'/%3E%3Cellipse cx='88' cy='66' rx='14' ry='6' transform='rotate(-60 88 66)'/%3E%3Cellipse cx='338' cy='312' rx='14' ry='6' transform='rotate(-40 338 312)'/%3E%3Cellipse cx='318' cy='340' rx='14' ry='6' transform='rotate(-60 318 340)'/%3E%3C/g%3E%3C/svg%3E");border:1px solid var(--line);background:linear-gradient(var(--overlay),var(--overlay)),var(--hero-img) center/cover no-repeat;border-radius:18px;padding:40px 20px;margin-bottom:24px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{--overlay:rgba(31,26,23,.72)}}
+:root[data-theme="dark"] .hero{--overlay:rgba(31,26,23,.72)}.small{letter-spacing:.25em;text-transform:uppercase;font-size:13px;color:var(--muted)}
 .names{font-family:"Great Vibes",cursive,Georgia,serif;font-size:56px;line-height:1.1;color:var(--accent);margin:14px 0}
 .names span{display:block;font-size:30px;color:var(--muted)}
 .info{margin:22px 0 0;line-height:1.6}
