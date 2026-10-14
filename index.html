@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>casamento</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite de Casamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos/casamento.css">
 </head>
 <body>
-    <h1>ola, mundo</h1>
-    
+<main>
+  <section class="hero">
+    <div class="small">Nós vamos nos casar</div>
+    <div class="names">Maria<span>&amp;</span>João</div>
+    <div class="small">Sábado, 20 de dezembro de 2026</div>
+    <p class="info"><b>Cerimônia às 16h</b><br>Espaço Jardim das Flores<br>Rua das Acácias, 123 — Sua Cidade</p>
+  </section>
+
+  <form id="f">
+    <h2>Confirme sua presença</h2>
+    <p class="sub">Responda até 20 de novembro</p>
+    <label for="n">Seu nome completo</label>
+    <input id="n" autocomplete="name" required>
+    <label for="q">Quantas pessoas vão com você? (incluindo você)</label>
+    <input id="q" type="number" min="1" max="10" value="1" inputmode="numeric">
+    <label for="m">Recado para os noivos (opcional)</label>
+    <textarea id="m"></textarea>
+    <div class="btns">
+      <button type="button" class="yes" id="y">Confirmo presença</button>
+      <button type="button" class="no" id="x">Não poderei comparecer</button>
+    </div>
+    <p class="err" id="e"></p>
+  </form>
+</main>
+<script>
+// Troque pelo WhatsApp dos noivos: código do país + DDD + número, só dígitos.
+var WHATSAPP = "5511999999999";
+function enviar(vai){
+  var nome = document.getElementById("n").value.trim();
+  var qtd = document.getElementById("q").value || "1";
+  var rec = document.getElementById("m").value.trim();
+  var err = document.getElementById("e");
+  if(!nome){err.textContent="Por favor, informe seu nome.";return;}
+  err.textContent="";
+  var t = vai
+    ? "Olá! Aqui é " + nome + ". Confirmo presença no casamento de vocês! Total de pessoas: " + qtd + "."
+    : "Olá! Aqui é " + nome + ". Infelizmente não poderei comparecer ao casamento de vocês.";
+  if(rec){t += " Recado: " + rec;}
+  window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
+}
+document.getElementById("y").onclick = function(){enviar(true);};
+document.getElementById("x").onclick = function(){enviar(false);};
+</script>
 </body>
 </html>
