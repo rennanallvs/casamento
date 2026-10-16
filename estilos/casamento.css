@@ -11,13 +11,7 @@
      box-sizing:border-box;
      padding-top:env(safe-area-inset-top,0px);
      padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1a17;
-     --card:#2a2420;
-     --ink:#f1e8de;
-     --muted:#b9a99a;
-     
-     --accent:#d4a77f;
-     --line:#43392f}}
+
 :root[data-theme="dark"]{--bg:#1f1a17;
      --card:#2a2420;--ink:#f1e8de;
      --muted:#b9a99a;
