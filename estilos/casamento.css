@@ -44,6 +44,9 @@ main{
      background: url('foto003.jpg') no-repeat  center;
      background-attachment: fixed;
      object-fit: cover;
+     background-size: cover;
+     
+
 }
      
 .small{
