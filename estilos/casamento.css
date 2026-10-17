@@ -40,8 +40,8 @@ main{
      border:1px solid var(--line);
      border-radius:18px;
      margin-bottom: 20px;
-     color: var(--muted);
-     background: url('foto003.jpg') no-repeat  center;
+     color: var(--line);
+     background: url('foto005.jpg') no-repeat  center;
      background-attachment: fixed;
      object-fit: cover;
      background-size: cover;
@@ -53,18 +53,18 @@ main{
      letter-spacing:.25em;
      text-transform:uppercase;
      font-size:13px;
-     color:var(--muted);
+     color:var(--line);
 }
 .names{
      font-family:"Great Vibes",cursive,Georgia,serif;
      font-size:56px;line-height:1.1;
-     color: var(--muted);
+     color: var(--line);
      margin:14px 0;
 }
 .names span{
      display:block;
      font-size:30px;
-     color:var(--muted);
+     color:var(--line);
 }
 .info{
      margin:22px 0 0;
