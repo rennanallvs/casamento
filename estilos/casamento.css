@@ -40,7 +40,7 @@ main{
      border:1px solid var(--line);
      border-radius:18px;
      margin-bottom: 20px;
-     color: var(--card);
+     color: var(--muted);
      background: url('foto003.jpg') no-repeat  center;
      background-attachment: fixed;
      object-fit: cover;
@@ -53,12 +53,12 @@ main{
      letter-spacing:.25em;
      text-transform:uppercase;
      font-size:13px;
-     color:var(--card);
+     color:var(--muted);
 }
 .names{
      font-family:"Great Vibes",cursive,Georgia,serif;
      font-size:56px;line-height:1.1;
-     color: var(--card);
+     color: var(--muted);
      margin:14px 0;
 }
 .names span{
