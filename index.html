@@ -14,7 +14,7 @@
                         Colossenses 3:14.
     </div>
     <div class="names">Jennifer<span>&amp;</span>Walleyn</div>
-      <div class="small">Convidam Para uma Celebração Do Seu Casamento &#10084</div>
+      <div class="small">Convidam Para uma Celebração Do Seu Casamento &#10084;</div>
     <div class="small">Quarta-feira, 04 de Novembro de 2026</div>
    
     <p class="info"><b>Cerimônia às 14h</b><br>Espaço Jardim das Flores  <br>Rua das Acácias, 123 — Sua Cidade <br> 📍<a href="https://maps.app.goo.gl/pQSxUEJVvtpVfyhF9" target="_blank">  Ver no mapa</a> </p>
@@ -38,7 +38,11 @@
   </form>
 </main>
 <script>
-var WHATSAPP = "61994547677";
+var ID_INSTANCIA = "3FAE69AF2CF6D1CA31D4AA999B0A4A90";
+var TOKEN_INSTANCIA = "E80AD43175CA7588773977A9";
+var CLIENT_TOKEN = "F66277724c7e543eab94386c8c66892fcS"; // só preencha se a Z-API pedir (Segurança > Token de segurança)
+var NUMERO = "5561994547677";
+
 function enviar(vai){
   var nome = document.getElementById("n").value.trim();
   var qtd = document.getElementById("q").value || "1";
@@ -46,11 +50,34 @@ function enviar(vai){
   var err = document.getElementById("e");
   if(!nome){err.textContent="Por favor, informe seu nome.";return;}
   err.textContent="";
+
   var t = vai
-    ? "Olá! Aqui é " + nome + ". Confirmo presença no casamento de vocês! Total de pessoas: " + qtd + "."
-    : "Olá! Aqui é " + nome + ". Infelizmente não poderei comparecer ao casamento de vocês.";
-  if(rec){t += " Recado: " + rec;}
-  window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
+    ? "✅ " + nome + " CONFIRMOU presença. Pessoas: " + qtd
+    : "❌ " + nome + " NÃO poderá comparecer.";
+  if(rec){t += "\nRecado: " + rec;}
+
+  var botoes = document.querySelectorAll(".btns button");
+  botoes.forEach(function(b){b.disabled=true;});
+
+  var headers = {"Content-Type":"application/json"};
+  if(CLIENT_TOKEN){headers["Client-Token"] = CLIENT_TOKEN;}
+
+  fetch("https://api.z-api.io/instances/" + ID_INSTANCIA + "/token/" + TOKEN_INSTANCIA + "/send-text", {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({phone: NUMERO, message: t})
+  })
+  .then(function(r){return r.json();})
+  .then(function(d){
+    if(!d.messageId && !d.zaapId){throw new Error();}
+    document.getElementById("f").innerHTML =
+      '<h2>' + (vai ? 'Presença confirmada! 🎉' : 'Resposta enviada') + '</h2>' +
+      '<p class="sub">Enviado com sucesso. Obrigado, ' + nome + '!</p>';
+  })
+  .catch(function(){
+    err.textContent="Não foi possível enviar. Tente novamente.";
+    botoes.forEach(function(b){b.disabled=false;});
+  });
 }
 document.getElementById("y").onclick = function(){enviar(true);};
 document.getElementById("x").onclick = function(){enviar(false);};
