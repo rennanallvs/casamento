@@ -13,11 +13,17 @@
      padding-bottom:env(safe-area-inset-bottom,0px);
 }
 
-:root[data-theme="dark"]{--bg:#1f1a17;
-     --card:#2a2420;--ink:#f1e8de;
+@media (prefers-color-scheme: dark){
+  :root{
+     --bg:#1f1a17;
+     --card:#2a2420;
+     --ink:#f1e8de;
      --muted:#b9a99a;
      --accent:#d4a77f;
      --line:#43392f;
+     color-scheme:dark;
+     
+  }
 }
 html{
      scroll-padding-top:env(safe-area-inset-top,0px);
@@ -126,7 +132,7 @@ button{
      cursor:pointer;
 }
 button:hover{
-     background-color: var(--ink);
+     opacity: 85;
 }
 .yes{
      background:var(--accent);
@@ -144,10 +150,21 @@ button:hover{
      margin:10px 0 0;
 }
 a{
-     text-decoration: none;
-     color:var(--ink);
+   text-decoration: underline;
+   color: var(--accent);
+   font-weight: 600;
 }
 a:hover{
-     color: blue;
-     text-decoration: underline;
+     color: var(--ink);
+}
+.verso{
+     text-transform: none;
+     
+     font-style: italic;
+     font-size: 17px;
+     line-height: 1.5;
+     margin-bottom: 12px;
+}
+.small{
+     margin: 8px 0;
 }
