@@ -37,9 +37,7 @@
   </form>
 </main>
 <script>
-var TOKEN = "COLE_O_TOKEN";
-var CHAT_ID = "COLE_O_CHAT_ID";
-
+var WHATSAPP = "61994547677";
 function enviar(vai){
   var nome = document.getElementById("n").value.trim();
   var qtd = document.getElementById("q").value || "1";
@@ -47,31 +45,11 @@ function enviar(vai){
   var err = document.getElementById("e");
   if(!nome){err.textContent="Por favor, informe seu nome.";return;}
   err.textContent="";
-
   var t = vai
-    ? "✅ " + nome + " CONFIRMOU presença. Pessoas: " + qtd
-    : "❌ " + nome + " NÃO poderá comparecer.";
-  if(rec){t += "\nRecado: " + rec;}
-
-  var botoes = document.querySelectorAll(".btns button");
-  botoes.forEach(function(b){b.disabled=true;});
-
-  fetch("https://api.telegram.org/bot" + TOKEN + "/sendMessage", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({chat_id: CHAT_ID, text: t})
-  })
-  .then(function(r){return r.json();})
-  .then(function(d){
-    if(!d.ok){throw new Error();}
-    document.getElementById("f").innerHTML =
-      '<h2>' + (vai ? 'Presença confirmada! 🎉' : 'Resposta enviada') + '</h2>' +
-      '<p class="sub">Enviado com sucesso. Obrigado, ' + nome + '!</p>';
-  })
-  .catch(function(){
-    err.textContent="Não foi possível enviar. Tente novamente.";
-    botoes.forEach(function(b){b.disabled=false;});
-  });
+    ? "Olá! Aqui é " + nome + ". Confirmo presença no casamento de vocês! Total de pessoas: " + qtd + "."
+    : "Olá! Aqui é " + nome + ". Infelizmente não poderei comparecer ao casamento de vocês.";
+  if(rec){t += " Recado: " + rec;}
+  window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
 }
 document.getElementById("y").onclick = function(){enviar(true);};
 document.getElementById("x").onclick = function(){enviar(false);};
