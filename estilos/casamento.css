@@ -22,7 +22,9 @@
      --accent:#d4a77f;
      --line:#43392f;
      color-scheme:dark;
-     
+     .yes{
+          color: #1f1a17;
+     }
   }
 }
 html{
