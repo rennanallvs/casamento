@@ -36,17 +36,13 @@ main{
      margin:0 auto;
      padding:32px 20px 48px;
 }
+
 .hero{
      border:1px solid var(--line);
      border-radius:18px;
-     margin-bottom: 20px;
-     background-attachment: fixed;
-     object-fit: cover;
-     background-size: cover;
+     margin-bottom: 10px;
      background-color: var(--card);
      padding: 25px;
-     
-
 }
      
 .small{
@@ -129,6 +125,9 @@ button{
      border:1px solid var(--accent);
      cursor:pointer;
 }
+button:hover{
+     background-color: var(--ink);
+}
 .yes{
      background:var(--accent);
      color:#fff;
@@ -143,4 +142,12 @@ button{
      font-size:16px;
      min-height:20px;
      margin:10px 0 0;
+}
+a{
+     text-decoration: none;
+     color:var(--ink);
+}
+a:hover{
+     color: blue;
+     text-decoration: underline;
 }
