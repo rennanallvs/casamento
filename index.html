@@ -26,7 +26,6 @@
       <p>📍<a href="https://maps.app.goo.gl/56F64Z6eSX7LPPFu7" target="_blank">Ver no mapa</a></p>
     </div>
   </section>
-  
 
   <form id="f">
     <h2>Confirme sua presença</h2>
@@ -43,21 +42,40 @@
     </div>
     <p class="err" id="e"></p>
   </form>
+
+  <div id="ok" style="display:none;text-align:center;padding:28px 20px;font-size:20px;line-height:1.5;"></div>
 </main>
 <script>
-var WHATSAPP = "61994547677";
+// Cole aqui a URL do Apps Script (a que termina em /exec), mantendo as aspas
+var URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwGjfAPkpxEp9HpWzjV25XsOFdNenyeDyEurEAJti-6I3tEIovcQujL3cnaDfzu7CdJ/exec";
+
 function enviar(vai){
   var nome = document.getElementById("n").value.trim();
   var qtd = document.getElementById("q").value || "1";
   var rec = document.getElementById("m").value.trim();
   var err = document.getElementById("e");
+  var by = document.getElementById("y");
+  var bx = document.getElementById("x");
   if(!nome){err.textContent="Por favor, informe seu nome.";return;}
   err.textContent="";
-  var t = vai
-    ? "Olá! Aqui é " + nome + ". Confirmo presença no casamento de vocês! Total de pessoas: " + qtd + "."
-    : "Olá! Aqui é " + nome + ". Infelizmente não poderei comparecer ao casamento de vocês.";
-  if(rec){t += " Recado: " + rec;}
-  window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
+  by.disabled = true; bx.disabled = true;
+
+  fetch(URL_SCRIPT, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "text/plain;charset=utf-8"},
+    body: JSON.stringify({nome: nome, pessoas: qtd, recado: rec, vai: vai})
+  }).then(function(){
+    document.getElementById("f").style.display = "none";
+    var ok = document.getElementById("ok");
+    ok.textContent = vai
+      ? "✅ Presença confirmada! Obrigado, " + nome + ". Esperamos você!"
+      : "Recebemos sua resposta, " + nome + ". Sentiremos sua falta!";
+    ok.style.display = "block";
+  }).catch(function(){
+    err.textContent = "Não foi possível enviar. Tente novamente.";
+    by.disabled = false; bx.disabled = false;
+  });
 }
 document.getElementById("y").onclick = function(){enviar(true);};
 document.getElementById("x").onclick = function(){enviar(false);};
