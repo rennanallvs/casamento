@@ -53,9 +53,24 @@ main{
     border-radius: 14px;
     background: rgba(255,255,255,.6);
   }
-  .jantar h3 { margin: 0 0 10px; font-size: 20px; }
-  .jantar p { margin: 0 0 10px; line-height: 1.5; font-size: 15px; }
-  .jantar .valor { font-style: italic; font-size: 14px; margin-bottom: 0; }
+  .jantar h3 {
+      margin: 0 0 10px;
+       font-size: 20px;
+      }
+  .jantar .horario { 
+     margin: 0 0 12px;
+     font-weight: bold;
+     font-size: 15px; }
+  .jantar p {
+      margin: 0 0 10px; 
+      line-height: 1.5; 
+      font-size: 15px; 
+     }
+  .jantar .valor {
+      font-style: italic; 
+      font-size: 14px; 
+      margin-bottom: 0;
+      }
 
 .hero{
      border:1px solid var(--line);
