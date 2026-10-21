@@ -44,6 +44,18 @@ main{
      margin:0 auto;
      padding:32px 20px 48px;
 }
+.jantar {
+    max-width: 480px;
+    margin: 24px auto;
+    padding: 20px 22px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 14px;
+    background: rgba(255,255,255,.6);
+  }
+  .jantar h3 { margin: 0 0 10px; font-size: 20px; }
+  .jantar p { margin: 0 0 10px; line-height: 1.5; font-size: 15px; }
+  .jantar .valor { font-style: italic; font-size: 14px; margin-bottom: 0; }
 
 .hero{
      border:1px solid var(--line);
